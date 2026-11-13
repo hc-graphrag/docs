@@ -160,6 +160,9 @@ jobs:
             echo "- :white_check_mark: No sensitive files" >> $GITHUB_STEP_SUMMARY
           fi
 
+      - name: Test pre-commit security hook
+        run: bash scripts/test-pre-commit-hook.sh
+
       - name: Fail on critical findings
         if: steps.api-keys.outputs.found == '1' || steps.credentials.outputs.found == '1' || steps.sensitive-files.outputs.found == '1'
         run: |
