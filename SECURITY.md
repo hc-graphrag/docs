@@ -1,122 +1,33 @@
-# セキュリティガイド
+# セキュリティと公開前チェック
 
-このリポジトリは [sponsors-orchestrator](https://github.com/asopitech-labs/sponsors-orchestrator) によりスポンサー向けに配信されます。機密情報の漏洩を防ぐため、以下のセキュリティ機能が導入されています。
+この公開リポジトリには、実在する認証情報、個人の端末情報、利用者固有の識別情報を含めないでください。安全な架空値であっても、検査例として秘密の形式をそのまま文書に書くとスキャンが誤検知するため、検出対象は言葉で説明します。
 
-## セキュリティ機能
+## 公開前の必須手順
 
-### 1. GitHub Actions セキュリティスキャン
+1. リポジトリを取得したら一度だけ `bash scripts/install-hooks.sh` を実行します。
+2. 変更をコミットします。pre-commit hook はステージ済みの内容を検査し、絶対パス、秘密らしい値、機密ファイルを検出するとコミットを止めます。警告も許可しません。
+3. hook が通った後にブランチをpushし、PRを作成します。
+4. GitHub Actions のスキャンも通ることを確認します。ローカルhookとサーバー側検査の両方を必須とします。
 
-`.github/workflows/security-scan.yml` により、PR作成時・push時に自動スキャンが実行されます。
+hookの導入後も、スキャンを無効化してコミットしたり、未確認の内容を公開ブランチへ直接送ったりしないでください。GitHub上で作成するファイルやPRについても、公開操作の前に同じ検査を行います。
 
-#### 検出項目
+## 検査対象
 
-| 項目 | パターン例 | 検出時 |
-|------|-----------|-------|
-| ローカルパス | `/home/user/`, `/Users/name/` | Warning |
-| プライベートIP | `192.168.x.x`, `10.x.x.x` | Warning |
-| APIキー | `ghp_*`, `sk-*`, `AKIA*` | **Error（PRブロック）** |
-| 認証情報 | `password = "xxx"` | **Error（PRブロック）** |
-| 機密ファイル | `.env`, `*.pem`, `*.key` | **Error（PRブロック）** |
+- 開発者の端末やホームディレクトリを示す絶対パス
+- 外部へ接続可能な認証トークン、秘密鍵、平文のパスワードや秘密値
+- 機密ファイル、プライベートネットワークの実アドレス
+- 実データ、個人情報、顧客名、内部識別子
 
-**Warning**: 警告は表示されますがマージ可能です。配信時にサニタイズされます。
+文書で検査機能を説明する場合、検出パターンそのものをコピーせず、上記のように一般化して記載します。
 
-**Error**: PRがブロックされます。修正が必要です。
+## Hookの手動実行
 
-### 2. Pre-commit Hook（推奨）
+変更をコミットする前に `bash scripts/pre-commit-check.sh` を実行できます。hookはステージされた版を検査するため、ワークツリーだけでなく実際にコミット対象となる内容を確認します。
 
-コミット前にローカルでチェックを実行できます。
+## 機密情報を誤って公開した場合
 
-#### 設定方法
+機密情報を直ちに失効させ、所有者とセキュリティ担当へ連絡してください。ファイルを削除するだけでは履歴や公開キャッシュから消えません。履歴の整理と公開ブランチの更新は、組織のインシデント手順に従ってください。
 
-```bash
-# Git hook として設定
-cp scripts/pre-commit-check.sh .git/hooks/pre-commit
-chmod +x .git/hooks/pre-commit
-```
+## 関連資料
 
-#### 手動実行
-
-```bash
-./scripts/pre-commit-check.sh
-```
-
-#### バイパス（非推奨）
-
-緊急時のみ使用してください：
-
-```bash
-git commit --no-verify
-```
-
-### 3. .gitignore
-
-機密ファイルが誤ってコミットされないよう、以下のパターンが除外されています：
-
-- 環境変数: `.env`, `.env.*`
-- 秘密鍵: `*.pem`, `*.key`, `id_rsa*`
-- 認証情報: `credentials.*`, `secrets.*`
-- ローカル設定: `config.local.*`, `local.settings.json`
-
-## 配信時のセキュリティ処理
-
-sponsors-orchestrator は配信前に追加のセキュリティ処理を行います：
-
-### サニタイズ（自動置換）
-
-| パターン | 置換後 |
-|---------|--------|
-| `/home/username/...` | `/home/{USER}/...` |
-| `/tmp/...` | `{TEMP}/...` |
-| `192.168.x.x` | `{PRIVATE_IP}` |
-| `postgresql://...` | `{DATABASE_URL}` |
-
-### ブロック（配信除外）
-
-以下を含むファイルは配信から除外されます：
-
-- APIキー・トークン
-- ハードコードされたパスワード
-- 秘密鍵ファイル
-
-## ベストプラクティス
-
-### DO（推奨）
-
-- 環境変数を使用する（ハードコードしない）
-- プレースホルダーを使用する（`your_api_key_here`）
-- 例示には架空の値を使用する（`192.0.2.1` = TEST-NET-1）
-- pre-commit hook を設定する
-
-### DON'T（禁止）
-
-- 本番の認証情報をコミットしない
-- ローカル環境固有のパスを記載しない
-- `.env` ファイルをコミットしない
-- `--no-verify` を常用しない
-
-## 問題が発生した場合
-
-### PRがブロックされた
-
-1. GitHub Actions のログを確認
-2. 検出された箇所を修正
-3. 再度 push
-
-### 機密情報をコミットしてしまった
-
-1. **すぐに** 該当の認証情報を無効化（トークン再発行等）
-2. `git filter-branch` または BFG Repo-Cleaner で履歴から削除
-3. Force push（要注意）
-
-```bash
-# BFG を使用した例
-bfg --delete-files .env
-git reflog expire --expire=now --all
-git gc --prune=now --aggressive
-git push --force
-```
-
-## 関連ドキュメント
-
-- [sponsors-orchestrator README](https://github.com/asopitech-labs/sponsors-orchestrator)
-- [GitHub - Removing sensitive data](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
+- [GitHub: リポジトリから機密データを削除する](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
