@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+repo_root=$(git rev-parse --show-toplevel)
+remote="$1"
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+    [[ "$local_sha" =~ ^0+$ ]] && continue
+
+    base=""
+    if [[ ! "$remote_sha" =~ ^0+$ ]]; then
+        base="$remote_sha"
+    else
+        branch="${remote_ref#refs/heads/}"
+        tracking="refs/remotes/$remote/$branch"
+        if git rev-parse --verify -q "$tracking" >/dev/null; then
+            base=$(git merge-base "$local_sha" "$tracking" || true)
+        fi
+        if [ -z "$base" ]; then
+            default_ref=$(git symbolic-ref -q "refs/remotes/$remote/HEAD" || true)
+            if [ -n "$default_ref" ]; then
+                base=$(git merge-base "$local_sha" "$default_ref" || true)
+            fi
+        fi
+    fi
+
+    if [ -n "$base" ]; then
+        commits=$(git rev-list --reverse "$base..$local_sha")
+    else
+        commits=$(git rev-list --reverse "$local_sha")
+    fi
+    for commit in $commits; do
+        bash "$repo_root/scripts/pre-commit-check.sh" --commit "$commit"
+    done
+done
+
+echo "Pre-push security check passed."
