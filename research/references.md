@@ -1,6 +1,6 @@
 # 参考事例と一次資料
 
-調査確認日: 2026-11-17。設計判断では、対象バージョンの一次資料を再確認します。
+最終確認日: 2026-11-17。設計判断の前に、対象バージョンの一次資料を確認します。
 
 ## RAGの基礎
 
@@ -33,7 +33,7 @@
 
 ## 実装資料
 
-- [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) — GraphRAG標準テンプレートの実装基盤。local、global、DRIFT関連のコードパスを含みます。
+- [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) — GraphRAG標準テンプレートの実装基盤です。local、global、DRIFTに関連するコードを含みます。
 - [既存実装の検索コード](https://github.com/hc-graphrag/llamaindex-python/tree/main/src/graphrag_anthropic_llamaindex)
 - LlamaIndex, [Loading Data](https://developers.llamaindex.ai/python/framework/module_guides/loading/) — 取り込み、変換、Node生成。
 - LlamaIndex, [Retriever](https://developers.llamaindex.ai/typescript/framework/modules/rag/retriever/) — 複数の取得方式。
