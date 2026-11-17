@@ -11,7 +11,8 @@
 
 ## 導入設計と実証
 
-- [データ構造化と導入アセスメント](enterprise-data-assessment.md)
+- [あそぴてっくのGraphRAG適用アセスメント](enterprise-data-assessment.md)
+- [既存のRAG / GraphRAG評価研究とデータ準備資料](research/rag-assessment-frameworks.md)
 - [検索困難データの調査メモ](research/hard-to-search-data.md)
 - [6業務ユースケース実証計画](use-cases/validation-plan.md)
 - [参考事例と一次資料](research/references.md)
