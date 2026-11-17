@@ -12,7 +12,8 @@
 
 ## このリポジトリでご確認いただけること
 
-- 情報圧縮とコンテキスト注入を起点にした設計原則
+- 取得からコンテキスト再構成までのRAGシステムモデル
+- 情報圧縮、階層化、復元、コンテキスト注入の設計原則
 - GraphRAGを標準テンプレートとしてご提案する理由と提供方法
 - 対象データ、業務課題、権限、更新条件のアセスメント
 - 回答品質、圧縮損失、来歴、費用、遅延の評価方法
@@ -23,8 +24,9 @@
 
 ## 読み始める場所
 
+- RAGの構成要素を知る: [RAGとは何か：取得からコンテキスト再構成までのシステムモデル](rag-system-model.md)
+- 上位の設計原則を知る: [情報圧縮・階層化・復元・コンテキスト注入の原理](information-compression-and-context-injection.md)
 - 業務への導入方法を知る: [GraphRAGテンプレートによる短期導入モデル](graphrag-delivery-model.md)
-- 設計の前提を知る: [情報圧縮とコンテキスト注入の原理](information-compression-and-context-injection.md)
 - 対象データと導入条件を整理する: [導入アセスメント](enterprise-data-assessment.md)
 - 品質とコストの測り方を知る: [評価方式](evaluation.md)
 - すべての資料を見る: [資料一覧](INDEX.md)
