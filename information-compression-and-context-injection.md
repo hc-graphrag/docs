@@ -28,8 +28,10 @@
   → 選択的圧縮 S(R | Q, budget)
   → 参照復元・意味再構成 E(S, P, X)
   → コンテキスト編成 C(E, Q, O)
-  → 利用 O(C)
+  → 注入 I(C, O)
+  → 生成・利用 O(C)
   → 検証 V(output, E, P)
+  → 更新・運用 U(X, Z, P)
 ~~~
 
 このモデルでは、圧縮表現を一つの Z に集約しません。用途、媒体、解像度ごとの表現族 {Z[m,l]} を持ち、タスク文脈に応じて組み合わせます。
@@ -60,7 +62,7 @@ Q = {
 |---|---|---|---|
 | 正規化 | 媒体差をそろえる | パース、OCR、表抽出 | Document / TextUnit生成 |
 | 単位化 | 意味と来歴の境界を作る | チャンク、行、セル | TextUnit |
-| 表現変換 | 異なる照合軸を作る | キーワード、埋め込み | 実体、関係、主張、埋め込み |
+| 表現生成・変換 | 異なる照合軸を作る | キーワード、埋め込み | 実体、関係、主張、埋め込み |
 | 階層化 | 複数解像度を接続する | 文書・章・要約木 | コミュニティ階層、レポート |
 | 索引化 | 表現へ到達可能にする | 転置、ANN、SQL | ベクトル索引、グラフ、Parquet |
 | マッチング | タスク文脈と表現を照合する | sparse / dense / rerank | local / global / DRIFT |
@@ -68,8 +70,9 @@ Q = {
 | 参照復元 | 圧縮表現から原情報へ戻る | chunk → source span | entity/relation/report → TextUnit |
 | 意味再構成 | 複数証拠をタスク単位へ組む | passage fusion | 関係・近傍・部分回答の統合 |
 | コンテキスト編成 | 利用可能な順序・形式へ整える | prompt、citation、JSON | graph context、reports、sources |
-| 注入・利用 | 利用主体へ渡す | LLM入力 | local/global/DRIFT回答 |
-| 検証 | 出力と証拠を対応付ける | citation、grounding | 来歴、TextUnit参照、評価 |
+| 注入 | 利用主体の処理境界へ渡す | LLM入力 | graph context、reports、sources |
+| 生成・利用 | コンテキストから出力・判断を作る | 根拠付き回答 | local/global/DRIFT回答 |
+| 検証・運用 | 出力と証拠を対応付け、表現を更新する | citation、grounding、再索引 | 来歴、TextUnit参照、再構築 |
 
 ## 5. 圧縮は表現族を作る処理
 
@@ -237,7 +240,7 @@ C = assemble(E[Q], Q, O, budget)
 | 段階 | 主な評価 |
 |---|---|
 | 正規化・単位化 | 構造保持、境界妥当性、欠損 |
-| 表現変換 | sufficiency、distortion、relation preservation |
+| 表現生成・変換 | sufficiency、distortion、relation preservation |
 | 階層化 | 親子整合性、粒度、少数例保持 |
 | マッチング | Recall@k、MRR、nDCG、証拠網羅性 |
 | 圧縮・要約 | 忠実性、圧縮率、必要情報保持 |
