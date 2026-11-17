@@ -60,7 +60,7 @@
 | content_type, language, parser_version | データ形式、言語、変換処理の版 | `text/markdown`, `ja`, `parser-2.1` |
 | representation_id, parent_id, resolution | 派生表現と元の単位、解像度 | `theme-setup`, `FEEDBACK-014`, `community` |
 | entities, relations, claims | 実体、関係、主張 | `first-time-admin`, `reported_issue`, `initial-setup` |
-| confidence, provenance | 確信度と根拠・来歴 | `needs-review`, `interview-014 §2` |
+| confidence, provenance | 確信度と根拠・来歴 | `null`, `interview-014 §2` |
 | checksum, deleted_at | 内容の差分検出と削除状態 | `sha256:…`, `null` |
 
 ## 適用条件を確認する項目
