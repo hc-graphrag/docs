@@ -1,33 +1,49 @@
 # 参考事例と一次資料
 
-調査確認日: 2026-11-17。リンク先は変化するため、判断前に再確認してください。
+調査確認日: 2026-11-17。設計判断では、対象バージョンの一次資料を再確認します。
 
-## 原理・圧縮
+## RAGの基礎
 
-- Claude E. Shannon, [A Mathematical Theory of Communication](https://web.mit.edu/6.441/spring05/reading/shannon1948.pdf) — 情報量と符号化を考える基礎。RAG や GraphRAG を直接論じる文献ではありません。
-- Naftali Tishby, Fernando C. Pereira, William Bialek, [The Information Bottleneck Method](https://arxiv.org/abs/physics/0004057) — 入力を圧縮しながら目的に有用な情報を保持する枠組み。プロジェクトの設計原則との接続は本プロジェクトによる解釈です。
-- Fangyuan Xu et al., [RECOMP: Improving Retrieval-Augmented LMs with Compression and Selective Augmentation](https://openreview.net/forum?id=5BIslWfM7H) — 取得文書を圧縮してコンテキストへ統合する研究例。
-- Nelson F. Liu et al., [Lost in the Middle](https://arxiv.org/abs/2307.03172) — 長いコンテキスト内での情報位置と利用性能を扱う研究。
+- Patrick Lewis et al., [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401) — パラメトリック記憶と、検索可能な非パラメトリック記憶を生成へ結合するRAG原論。
+- Kelvin Guu et al., [REALM: Retrieval-Augmented Language Model Pre-Training](https://arxiv.org/abs/2002.08909) — 大規模コーパスから文書を取得し、言語モデルが参照する構成。
+- Vladimir Karpukhin et al., [Dense Passage Retrieval for Open-Domain Question Answering](https://aclanthology.org/2020.emnlp-main.550/) — 質問とパッセージを密ベクトルで照合する候補取得。
+- Omar Khattab and Matei Zaharia, [ColBERT](https://arxiv.org/abs/2004.12832) — トークン単位の遅延相互作用による効率的な検索・順位付け。
+- Gautier Izacard and Edouard Grave, [Fusion-in-Decoder](https://aclanthology.org/2021.eacl-main.74/) — 複数の取得パッセージを個別に符号化し、生成段階で証拠を統合する方法。
 
-## GraphRAG 実装資料
+## 階層化・圧縮・コンテキスト編成
 
-- [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) — 本プロジェクトが最初の方式候補として検証する既存実装。確認時、local/global/DRIFT search などのコードパスが存在します。
+- Parth Sarthi et al., [RAPTOR](https://arxiv.org/abs/2401.18059) — チャンクをクラスタリング・要約して再帰的な木を作り、複数の抽象度から取得する方法。
+- Fangyuan Xu et al., [RECOMP](https://proceedings.iclr.cc/paper_files/paper/2024/hash/bda88ed2892f5e61c9a9bf215c566913-Abstract-Conference.html) — 取得文書を抽出的・生成的に圧縮し、選択的にコンテキストへ追加する方法。
+- Nelson F. Liu et al., [Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/) — 長いコンテキスト内で、関連情報の位置が利用性能へ与える影響。
+- Huiqiang Jiang et al., [LongLLMLingua](https://arxiv.org/abs/2310.06839) — 長いコンテキストでの情報密度、位置、圧縮を扱う方法。
+
+## 上位原理
+
+- Claude E. Shannon, [A Mathematical Theory of Communication](https://web.mit.edu/6.441/spring05/reading/shannon1948.pdf) — 情報量と符号化の基礎。
+- Naftali Tishby, Fernando C. Pereira, William Bialek, [The Information Bottleneck Method](https://arxiv.org/abs/physics/0004057) — 目的に有用な情報を保持しながら入力を圧縮する枠組み。
+
+## GraphRAG
+
+- Darren Edge et al., [From Local to Global: A Graph RAG Approach to Query-Focused Summarization](https://arxiv.org/abs/2404.16130) — 実体グラフ、コミュニティ要約、部分回答の統合を用いた全体質問への方法。
+- Microsoft GraphRAG, [Indexing Dataflow](https://microsoft.github.io/graphrag/index/default_dataflow/) — Document、TextUnit、実体、関係、主張、コミュニティ、レポート、埋め込みへ至る変換。
+- Microsoft GraphRAG, [Indexing Methods](https://microsoft.github.io/graphrag/index/methods/) — 実体・関係抽出、要約、標準方式と高速方式の構成。
+- Microsoft GraphRAG, [Query methods](https://microsoft.github.io/graphrag/query/overview/) — local、global、DRIFT、basic searchの公式説明。
+- [Microsoft GraphRAG repository](https://github.com/microsoft/graphrag) — 公開実装。
+- [Microsoft GraphRAG benchmarking datasets](https://github.com/microsoft/graphrag-benchmarking-datasets) — 公開ベンチマーク用データ。
+
+## 実装資料
+
+- [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) — GraphRAG標準テンプレートの実装基盤。local、global、DRIFT関連のコードパスを含みます。
 - [既存実装の検索コード](https://github.com/hc-graphrag/llamaindex-python/tree/main/src/graphrag_anthropic_llamaindex)
-- [LlamaIndex indexing guide](https://github.com/run-llama/llama_index/blob/main/docs/src/content/docs/framework/module_guides/indexing/index_guide.md) — Property Graph Index、抽出カスタマイズ、検索方法の公式説明。
-- [LlamaIndex PropertyGraphIndex source](https://github.com/run-llama/llama_index/blob/main/llama-index-core/llama_index/core/indices/property_graph/base.py) — APIと既定値は使用版で要確認。
-- [Microsoft GraphRAG repository](https://github.com/microsoft/graphrag) と [documentation](https://microsoft.github.io/graphrag/) — 公開実装とガイド。要件・費用は対象バージョンとデータで評価します。
+- LlamaIndex, [Loading Data](https://developers.llamaindex.ai/python/framework/module_guides/loading/) — 取り込み、変換、Node生成。
+- LlamaIndex, [Retriever](https://developers.llamaindex.ai/typescript/framework/modules/rag/retriever/) — 複数の取得方式。
+- LlamaIndex, [Node Postprocessors](https://developers.llamaindex.ai/python/framework/module_guides/querying/node_postprocessors/node_postprocessors/) — 取得後の変換、フィルタ、再順位付け。
+- LlamaIndex, [Response Synthesizer](https://developers.llamaindex.ai/typescript/framework/modules/rag/response_synthesizer/) — 取得ノードの統合と回答生成。
 
-## GraphRAG の公開研究・データ事例
+## このリポジトリでの位置づけ
 
-- Darren Edge et al., [From Local to Global: A Graph RAG Approach to Query-Focused Summarization](https://arxiv.org/abs/2404.16130) は、エンティティグラフとコミュニティ要約を用いて全体質問へ対応する方法を報告しています。当該評価条件での研究結果であり、すべての業務や質問での優位性を意味しません。
-- Microsoft公式 [indexing overview](https://microsoft.github.io/graphrag/index/overview/) は、エンティティ・関係・claim抽出、コミュニティ検出、複数粒度の要約生成、テキスト埋め込みを説明しています。出力形式や処理は設定・バージョンに依存します。
-- [Microsoft GraphRAG benchmarking datasets](https://github.com/microsoft/graphrag-benchmarking-datasets) は公開ベンチマーク事例です。企業内保全・契約・医療データの代表データとは限りません。
+[RAGのシステムモデル](../rag-system-model.md) で、取得、階層化、マッチング、圧縮、復元、コンテキスト編成、生成、検証を分解します。
 
-## このプロジェクトでの解釈
+[情報圧縮・階層化・復元・コンテキスト注入の原理](../information-compression-and-context-injection.md) で、それらをRAG以外の利用主体にも適用できる上位モデルとして定義します。
 
-確認済み: 指定リポジトリに local/global/DRIFT 関連のコードパスがあること、公開資料がグラフ抽出・コミュニティ要約・複数解像度の検索を説明していること。
-
-プロジェクト判断: 情報圧縮とコンテキスト注入という原理に対し、関係構造と複数解像度を保持する方式候補として GraphRAG をまず採用します。
-
-未確認: GraphRAG の一般的優位性、現在の各機能の動作、互換性、性能、セキュリティ、顧客環境での効果。採用は検証の出発点であり、実証済みの結論ではありません。
-
+GraphRAGをRAG導入の標準テンプレートとしてご提案し、案件では実データを使って品質、費用、期間、適用範囲を測定します。
