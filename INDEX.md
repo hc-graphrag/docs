@@ -1,13 +1,13 @@
-# GraphRAG導入資料一覧
+# RAG / GraphRAG導入資料一覧
 
 お客様のビジネス課題と情報圧縮・コンテキスト注入の原理を起点に、GraphRAGをRAG導入の標準テンプレートとしてご提案します。このページでは、導入判断、適用設計、品質評価に使用する資料をご案内します。
 
 ## 最初にお読みいただく資料
 
+- [RAGとは何か：取得からコンテキスト再構成までのシステムモデル](rag-system-model.md)
+- [情報圧縮・階層化・復元・コンテキスト注入の原理](information-compression-and-context-injection.md)
 - [GraphRAGテンプレートによる短期導入モデル](graphrag-delivery-model.md)
-- [情報圧縮とコンテキスト注入の原理](information-compression-and-context-injection.md)
-- [RAGという実装語と上位原理の関係](rag-primer.md)
-- [圧縮・注入の評価方式](evaluation.md)
+- [RAG / GraphRAGの段階別評価方式](evaluation.md)
 
 ## 導入設計と実証
 
