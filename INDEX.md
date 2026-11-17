@@ -16,4 +16,3 @@
 - [6業務ユースケース実証計画](use-cases/validation-plan.md)
 - [参考事例と一次資料](research/references.md)
 
-Markdown文書を技術内容の正本として管理し、スライドやPDFはお客様への説明や配布に使います。
