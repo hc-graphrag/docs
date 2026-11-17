@@ -16,10 +16,6 @@
 - [6業務ユースケース実証計画](use-cases/validation-plan.md)
 - [参考事例と一次資料](research/references.md)
 
-## 市場説明の草案
-
-- [企業向け導入支援LP案](go-to-market/landing-page.md)
-- [受託獲得ブログ戦略案](go-to-market/blog-strategy.md)
 
 案件ごとにGraphRAGテンプレートを対象業務へ適用する方法を設計し、コストと品質を測定します。その結果を標準テンプレートの改善へ反映します。
 
