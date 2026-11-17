@@ -26,7 +26,6 @@ jobs:
         run: |
           set -euo pipefail
           failed=0
-          single_quote="'"
           pathspec=(
             '*.md'
             '*.yml'
@@ -52,7 +51,8 @@ jobs:
           scan_pattern "Local filesystem path" '(/home/[^/]+/|/Users/[^/]+/|C:\\Users\\|/tmp/|/var/tmp/)'
           scan_pattern "Private network address" '(192[.]168[.][0-9]+[.][0-9]+|10[.][0-9]+[.][0-9]+[.][0-9]+|172[.](1[6-9]|2[0-9]|3[0-1])[.][0-9]+[.][0-9]+)'
           scan_pattern "Token-like value" '(sk-[[:alnum:]]{32,}|ghp_[[:alnum:]]{36}|ghs_[[:alnum:]]{36}|github_pat_[[:alnum:]_]{22,}|xox[baprs]-[[:alnum:]-]+|AKIA[[:upper:]0-9]{16})'
-          scan_pattern "Credential assignment" "([Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]|[Ss][Ee][Cc][Rr][Ee][Tt])[[:space:]]*[=:][[:space:]]*[\\"${single_quote}][^\\"${single_quote}]+[\\"${single_quote}]"
+          scan_pattern "Credential assignment" '([Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]|[Ss][Ee][Cc][Rr][Ee][Tt])[[:space:]]*[=:][[:space:]]*"[^"]+"'
+          scan_pattern "Credential assignment" "([Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]|[Ss][Ee][Cc][Rr][Ee][Tt])[[:space:]]*[=:][[:space:]]*'[^']+'"
 
           while IFS= read -r -d '' path; do
             name="${path##*/}"
