@@ -26,7 +26,7 @@ RAGの評価対象は、必要な情報へ到達し、根拠を保ったコン�
 
 ### τ-bench
 
-[τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains](https://openreview.net/forum?id=roNSXZpUDN)（ICLR 2025）は、利用者との対話、業務ルール、APIツール、状態を持つデータベースを組み合わせています。会話終了後のデータベース状態を正解状態と比較し、複数試行の信頼性を pass^k で測ります。
+[τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains](https://arxiv.org/abs/2406.12045)（ICLR 2025）は、利用者との対話、業務ルール、APIツール、状態を持つデータベースを組み合わせています。会話終了後のデータベース状態を正解状態と比較し、複数試行の信頼性を pass^k で測ります。
 
 同じ依頼でも会話の進み方は変わるため、個々の成功率と、繰り返し成功できるかを分けて見る根拠になります。
 
