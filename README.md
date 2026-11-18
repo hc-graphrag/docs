@@ -35,14 +35,11 @@
 
 実行可能な検証コードを [hc-graphrag/rag-usecase-demos](https://github.com/hc-graphrag/rag-usecase-demos)、GraphRAG実装を [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) で公開しています。
 
-## GitHub Sponsors 向けの資料同期
+## GraphRAGの開発を先行して追う
 
-このリポジトリは公開資料の置き場です。GitHub Sponsors 向けの自動同期では、`main` ブランチ上の資料を、置かれているフォルダで振り分けます。
+GraphRAGの導入ガイドや評価資料は、どなたでもこのリポジトリで読めます。公開前の設計や試作から開発を追いたい方には、[GitHub Sponsors](https://github.com/sponsors/asopitech) に先行閲覧プランがあります。
 
-| このリポジトリでの置き場所 | 同期先 |
-| --- | --- |
-| `concepts/`、`design/` | Early Access と Enterprise |
-| `specs/` | Enterprise のみ |
-| リポジトリ直下の Markdown（`README.md` を含む）や、上記以外のフォルダ | このリポジトリからの自動同期の対象外 |
+- **Early Access**：設計ドラフト、実験の記録、試作から、GraphRAGの設計や検証がどのように進んでいるかを追えます。
+- **Enterprise-focused Early Access**：セキュリティやシステム導入に関わる企業向け機能を、公開前の段階から追えます。
 
-ここでの振り分けは、公開資料をスポンサー向けリポジトリにも同期するためのルールです。元のファイルは置き場所にかかわらず公開されます。非公開資料や顧客情報はこのリポジトリに置かないでください。プランの内容は [GitHub Sponsors](https://github.com/sponsors/asopitech) をご覧ください。
+このリポジトリの公開資料のうち、`concepts/` と `design/` は両プラン向けのリポジトリにも同期し、`specs/` はEnterprise向けにのみ同期します。ルート直下のガイドなど、それ以外の資料はこのリポジトリで読めます。フォルダの違いは同期先を決めるもので、元の資料の公開範囲は変わりません。
