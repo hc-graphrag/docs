@@ -33,7 +33,7 @@
 
 ## 実装資料
 
-- [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) — GraphRAG標準テンプレートの実装基盤です。local、global、DRIFTに関連するコードを含みます。
+- [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) — GraphRAGを技術基盤として利用する実装です。local、global、DRIFTに関連するコードを含みます。
 - [既存実装の検索コード](https://github.com/hc-graphrag/llamaindex-python/tree/main/src/graphrag_anthropic_llamaindex)
 - LlamaIndex, [Loading Data](https://developers.llamaindex.ai/python/framework/module_guides/loading/) — 取り込み、変換、Node生成。
 - LlamaIndex, [Retriever](https://developers.llamaindex.ai/typescript/framework/modules/rag/retriever/) — 複数の取得方式。
@@ -46,4 +46,4 @@
 
 [情報圧縮・階層化・復元・コンテキスト注入の原理](../information-compression-and-context-injection.md) で、それらをRAG以外の利用主体にも適用できる上位モデルとして定義します。
 
-GraphRAGをRAG導入の標準テンプレートとしてご提案し、案件では実データを使って品質、費用、期間、適用範囲を測定します。
+[Microsoft Researchが研究・開発するGraphRAG](https://www.microsoft.com/en-us/research/project/graphrag/)を技術基盤としてご提案し、お客様の実データを使って、AIエージェントのユースケースとの適合性、品質、費用、期間、適用範囲を測定します。
