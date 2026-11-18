@@ -31,6 +31,16 @@
 - [Microsoft GraphRAG repository](https://github.com/microsoft/graphrag) — 公開実装。
 - [Microsoft GraphRAG benchmarking datasets](https://github.com/microsoft/graphrag-benchmarking-datasets) — 公開ベンチマーク用データ。
 
+## データ配置・権限・来歴
+
+- AWS, [Amazon DataZone data discovery, subscription, and consumption](https://docs.aws.amazon.com/datazone/latest/userguide/discover-subscribe-consume-data.html) — データ利用申請、所有者による承認、アクセス付与の流れ。
+- AWS, [Metadata enforcement rules for subscription requests](https://docs.aws.amazon.com/datazone/latest/userguide/metadata-rules.html) — 利用理由の審査と行・列単位の承認範囲。
+- AWS IAM, [Temporary security credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) — 委任、クロスアカウントアクセス、期限付き認証情報。
+- AWS Glue, [Review IAM permissions needed for ETL jobs](https://docs.aws.amazon.com/glue/latest/dg/getting-started-min-privs-job.html) — 加工ジョブの入力元、出力先、一時領域、暗号鍵に必要な権限。
+- AWS Lake Formation, [Overview of Lake Formation permissions](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-overview.html) — カタログ、保存場所、実データ、IAMの権限境界。
+- Amazon S3, [Access control](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-management.html) — オブジェクト所有者、資源ポリシー、クロスアカウント共有。
+- W3C, [PROV-O: The PROV Ontology](https://www.w3.org/TR/prov-o/) — Entity、Activity、Agentと派生関係による来歴表現。
+
 ## AIエージェント評価
 
 - Xiao Liu et al., [AgentBench: Evaluating LLMs as Agents](https://openreview.net/forum?id=zAdUB0aCTQ) — 複数の対話環境における推論、意思決定、指示追従の評価。
@@ -52,8 +62,8 @@
 
 | 設計資料 | 主に参照する資料 |
 |---|---|
-| [AIエージェント向けRAGシステムモデル](../rag-system-model.md) | RAG原論、Microsoft GraphRAG公式資料 |
-| [情報圧縮・階層化・復元・コンテキスト注入の原理](../information-compression-and-context-injection.md) | Shannon、Information Bottleneck、RAPTOR、RECOMP、Lost in the Middle |
+| [AIエージェント向けRAGシステムモデル](../rag-system-model.md) | RAG原論、Microsoft GraphRAG公式資料、AWSのデータ・権限モデル |
+| [情報圧縮・階層化・復元・コンテキスト注入の原理](../information-compression-and-context-injection.md) | Shannon、Information Bottleneck、RAPTOR、RECOMP、Lost in the Middle、PROV-O |
 | [段階別評価方式](../evaluation.md) | RAG評価研究、GraphRAGの索引・検索仕様、AIエージェント評価研究 |
 | [業務ユースケース実証計画](../use-cases/validation-plan.md) | AgentBench、AgentBoard、τ-bench、ToolSandbox、STATE-Bench |
-| [ユースケース・データ適合アセスメント](../enterprise-data-assessment.md) | データ準備、由来・来歴、GraphRAGの適用条件 |
+| [ユースケース・データ適合アセスメント](../enterprise-data-assessment.md) | データ準備、配置、提供元承認、加工・派生データ権限、来歴、GraphRAGの適用条件 |
