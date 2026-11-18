@@ -34,3 +34,15 @@
 ## 実装と検証コード
 
 実行可能な検証コードを [hc-graphrag/rag-usecase-demos](https://github.com/hc-graphrag/rag-usecase-demos)、GraphRAG実装を [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) で公開しています。
+
+## GitHub Sponsors 向けの資料同期
+
+このリポジトリは公開資料の置き場です。GitHub Sponsors 向けの自動同期では、`main` ブランチ上の資料を、置かれているフォルダで振り分けます。
+
+| このリポジトリでの置き場所 | 同期先 |
+| --- | --- |
+| `concepts/`、`design/` | Early Access と Enterprise |
+| `specs/` | Enterprise のみ |
+| リポジトリ直下の Markdown（`README.md` を含む）や、上記以外のフォルダ | このリポジトリからの自動同期の対象外 |
+
+ここでの振り分けは、公開資料をスポンサー向けリポジトリにも同期するためのルールです。元のファイルは置き場所にかかわらず公開されます。非公開資料や顧客情報はこのリポジトリに置かないでください。プランの内容は [GitHub Sponsors](https://github.com/sponsors/asopitech) をご覧ください。
