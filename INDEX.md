@@ -1,19 +1,18 @@
-# RAG / GraphRAG導入資料一覧
+# AIエージェント向けRAG / GraphRAG導入資料
 
-お客様のビジネス課題と、情報圧縮・コンテキスト注入の原理を起点に、GraphRAGをRAG導入の標準テンプレートとしてご提案します。このページでは、導入の判断、対象業務への適用設計、品質評価に使う資料をご案内します。
+お客様がAIエージェントに何を行わせたいかを起点に、必要なコンテキストと根拠データを定義し、GraphRAGテンプレートを対象業務へ適用します。このページでは、考え方、適用アセスメント、導入、評価、実証の順に資料をご案内します。
 
 ## 最初にお読みいただく資料
 
-- [RAGとは何か：取得からコンテキスト再構成までのシステムモデル](rag-system-model.md)
-- [情報圧縮・階層化・復元・コンテキスト注入の原理](information-compression-and-context-injection.md)
-- [GraphRAGテンプレートによる短期導入モデル](graphrag-delivery-model.md)
-- [RAG / GraphRAGの段階別評価方式](evaluation.md)
+1. [RAGとは何か：AIエージェントの行動へコンテキストを供給するシステムモデル](rag-system-model.md)
+2. [情報圧縮・階層化・復元・コンテキスト注入の原理](information-compression-and-context-injection.md)
+3. [AIエージェント向けGraphRAG適用アセスメント](enterprise-data-assessment.md)
+4. [AIエージェント向けGraphRAGテンプレートによる短期導入モデル](graphrag-delivery-model.md)
+5. [RAG / GraphRAGの段階別評価方式](evaluation.md)
 
 ## 導入設計と実証
 
-- [あそぴてっくのGraphRAG適用アセスメント](enterprise-data-assessment.md)
 - [既存のRAG / GraphRAG評価研究とデータ準備資料](research/rag-assessment-frameworks.md)
 - [検索困難データの調査メモ](research/hard-to-search-data.md)
-- [6業務ユースケース実証計画](use-cases/validation-plan.md)
+- [AIエージェント向け6業務ユースケース実証計画](use-cases/validation-plan.md)
 - [参考事例と一次資料](research/references.md)
-
