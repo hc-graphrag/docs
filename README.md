@@ -35,11 +35,8 @@
 
 実行可能な検証コードを [hc-graphrag/rag-usecase-demos](https://github.com/hc-graphrag/rag-usecase-demos)、GraphRAG実装を [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) で公開しています。
 
-## GraphRAGの開発を先行して追う
+## スポンサーの方へ：GraphRAGの資料は非公開リポジトリでまとめて読めます
 
-GraphRAGの導入ガイドや評価資料は、どなたでもこのリポジトリで読めます。公開前の設計や試作から開発を追いたい方には、[GitHub Sponsors](https://github.com/sponsors/asopitech) に先行閲覧プランがあります。
+このリポジトリのGraphRAG資料は、どなたでもお読みいただけます。[GitHub Sponsors](https://github.com/sponsors/asopitech) の先行閲覧プランをご利用の方は、プランに応じた限定資料を非公開リポジトリでご覧いただけます。
 
-- **Early Access**：設計ドラフト、実験の記録、試作から、GraphRAGの設計や検証がどのように進んでいるかを追えます。
-- **Enterprise-focused Early Access**：セキュリティやシステム導入に関わる企業向け機能を、公開前の段階から追えます。
-
-このリポジトリの公開資料のうち、`concepts/` と `design/` は両プラン向けのリポジトリにも同期し、`specs/` はEnterprise向けにのみ同期します。ルート直下のガイドなど、それ以外の資料はこのリポジトリで読めます。フォルダの違いは同期先を決めるもので、元の資料の公開範囲は変わりません。
+このリポジトリの公開資料もすべて、各先行閲覧プランの非公開リポジトリに同期します。限定資料も公開資料も、ご利用中のプランの非公開リポジトリでまとめて確認できます。公開リポジトリを別に追う必要はありません。
