@@ -6,7 +6,7 @@
 
 評価は、データ適合性、GraphRAGが構成するコンテキスト、AIエージェントの行動結果の三層に分けます。最終判定には、お客様が求める業務成果への到達状況を使用します。
 
-関連する責任境界は[AIエージェント向けRAGシステムモデル](rag-system-model.md)、事前確認は[ユースケース・データ適合アセスメント](enterprise-data-assessment.md)に示します。
+関連する責任境界は[AIエージェント向けRAGシステムモデル](rag-system-model.md)、事前確認は[ユースケース・データ適合アセスメント](enterprise-data-assessment.md)に示します。行動過程と反復信頼性を評価する根拠は[AIエージェント評価の既存研究](research/agent-evaluation.md)で整理しています。
 
 ## 2. 評価単位
 
@@ -36,7 +36,7 @@
 | 期待結果 | 必要な証拠、出力、停止・確認条件 |
 | 実行条件 | モデル、設定、予算、試行回数 |
 
-事前の判断は[ユースケース・データ適合アセスメント](enterprise-data-assessment.md)、シナリオの記録形式は[6業務ユースケース実証計画](use-cases/validation-plan.md)に示します。
+事前の判断は[ユースケース・データ適合アセスメント](enterprise-data-assessment.md)、シナリオの記録形式は[業務ユースケース実証計画](use-cases/validation-plan.md)に示します。
 
 ## 4. 評価の進め方
 
