@@ -40,10 +40,11 @@
 - LlamaIndex, [Node Postprocessors](https://developers.llamaindex.ai/python/framework/module_guides/querying/node_postprocessors/node_postprocessors/) — 取得後の変換、フィルタ、再順位付け。
 - LlamaIndex, [Response Synthesizer](https://developers.llamaindex.ai/typescript/framework/modules/rag/response_synthesizer/) — 取得ノードの統合と回答生成。
 
-## このリポジトリでの位置づけ
+## 設計資料からの参照先
 
-[RAGのシステムモデル](../rag-system-model.md) で、取得、階層化、マッチング、圧縮、復元、コンテキスト編成、生成、検証を分解します。
-
-[情報圧縮・階層化・復元・コンテキスト注入の原理](../information-compression-and-context-injection.md) で、それらをRAG以外の利用主体にも適用できる上位モデルとして定義します。
-
-[Microsoft Researchが研究・開発するGraphRAG](https://www.microsoft.com/en-us/research/project/graphrag/)を技術基盤としてご提案し、お客様の実データを使って、AIエージェントのユースケースとの適合性、品質、費用、期間、適用範囲を測定します。
+| 設計資料 | 主に参照する資料 |
+|---|---|
+| [AIエージェント向けRAGシステムモデル](../rag-system-model.md) | RAG原論、Microsoft GraphRAG公式資料 |
+| [情報圧縮・階層化・復元・コンテキスト注入の原理](../information-compression-and-context-injection.md) | Shannon、Information Bottleneck、RAPTOR、RECOMP、Lost in the Middle |
+| [段階別評価方式](../evaluation.md) | RAG評価研究、GraphRAGの索引・検索仕様 |
+| [ユースケース・データ適合アセスメント](../enterprise-data-assessment.md) | データ準備、由来・来歴、GraphRAGの適用条件 |
