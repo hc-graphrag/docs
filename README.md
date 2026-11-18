@@ -14,19 +14,19 @@
 - ユースケースと保有データの適合性をasopitechが判断するアセスメントチェックリスト
 - AIエージェントの行動へコンテキストを供給するRAGシステムモデル
 - 情報圧縮、階層化、復元、コンテキスト注入の設計原則
-- GraphRAGの提供範囲と対象業務への適用方法
+- 支援工程、成果物、確認時点
 - 行動完了、根拠、データ適合性、費用、遅延の評価方法
 - 代表行動シナリオによる実証計画
 - 技術的な主張、適用条件、検証状況の根拠
 
 ## 読み始める場所
 
-- RAGの位置づけ: [RAGとは何か：AIエージェントの行動へコンテキストを供給するシステムモデル](rag-system-model.md)
+- システム構成: [AIエージェント向けRAGシステムモデル](rag-system-model.md)
 - 上位原理: [情報圧縮・階層化・復元・コンテキスト注入の原理](information-compression-and-context-injection.md)
 - 適用判断: [AIエージェント導入のためのユースケース・データ適合アセスメント](enterprise-data-assessment.md)
-- 導入方法: [AIエージェント導入に向けたGraphRAG適用モデル](graphrag-delivery-model.md)
+- 支援工程: [GraphRAG適用支援の進め方](graphrag-delivery-model.md)
 - 調査根拠: [AIエージェント向けRAGの設計根拠](research/agent-context-and-data-fitness.md)
-- 評価方法: [RAG / GraphRAGの段階別評価方式](evaluation.md)
+- 評価方法: [段階別評価方式](evaluation.md)
 - 全資料: [資料一覧](INDEX.md)
 
 ## 実装と検証コード
