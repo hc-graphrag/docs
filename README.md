@@ -34,3 +34,9 @@
 ## 実装と検証コード
 
 実行可能な検証コードを [hc-graphrag/rag-usecase-demos](https://github.com/hc-graphrag/rag-usecase-demos)、GraphRAG実装を [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) で公開しています。
+
+## スポンサーの方へ：GraphRAGの資料は非公開リポジトリでまとめて読めます
+
+このリポジトリのGraphRAG資料は、どなたでもお読みいただけます。[GitHub Sponsors](https://github.com/sponsors/asopitech) の先行閲覧プランをご利用の方は、プランに応じた限定資料を非公開リポジトリでご覧いただけます。
+
+このリポジトリの公開資料もすべて、各先行閲覧プランの非公開リポジトリに同期します。限定資料も公開資料も、ご利用中のプランの非公開リポジトリでまとめて確認できます。公開リポジトリを別に追う必要はありません。
