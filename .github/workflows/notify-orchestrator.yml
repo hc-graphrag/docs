@@ -5,11 +5,8 @@ on:
     branches:
       - main
       - master
-    paths:
-      - 'concepts/**'
-      - 'design/**'
-      - 'specs/**'
-      - 'README.md'
+    # Public docs and linked assets can live anywhere in this repository.
+    # The orchestrator determines which files are included in the mirror.
 
 jobs:
   notify:
