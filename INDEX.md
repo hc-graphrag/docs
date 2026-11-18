@@ -1,13 +1,13 @@
-# AIエージェント向けRAG / GraphRAG導入資料
+# AIエージェント導入・GraphRAG適用資料
 
-お客様がAIエージェントに行わせたいユースケースと、得たい業務成果を起点に、保有データがそのユースケースへ合っているかをasopitechが判断します。その判断に基づき、asopitechがGraphRAGテンプレートを対象業務へ適用します。このページでは、考え方、適用アセスメント、導入、評価、実証の順に資料をご案内します。
+この資料群は、お客様の業務課題、AIエージェントに行わせたいユースケース、保有データの適合性をアセスメントし、[Microsoft Researchが研究・開発するGraphRAG](https://www.microsoft.com/en-us/research/project/graphrag/)をベースとするAIエージェントソリューションの設計・実装・検証へつなげるためのものです。
 
 ## 最初にお読みいただく資料
 
 1. [RAGとは何か：AIエージェントの行動へコンテキストを供給するシステムモデル](rag-system-model.md)
 2. [情報圧縮・階層化・復元・コンテキスト注入の原理](information-compression-and-context-injection.md)
-3. [あそぴてっくのGraphRAGテンプレート適用アセスメント](enterprise-data-assessment.md)
-4. [AIエージェント向けGraphRAGテンプレートによる短期導入モデル](graphrag-delivery-model.md)
+3. [AIエージェント導入のためのユースケース・データ適合アセスメント](enterprise-data-assessment.md)
+4. [AIエージェント導入に向けたGraphRAG適用モデル](graphrag-delivery-model.md)
 5. [AIエージェント向けRAGの設計根拠](research/agent-context-and-data-fitness.md)
 6. [RAG / GraphRAGの段階別評価方式](evaluation.md)
 
