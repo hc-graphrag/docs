@@ -1,6 +1,6 @@
 # RAG / GraphRAGの既存評価研究とデータ準備資料
 
-最終確認日: 2026-11-17
+最終確認日: 2026-11-18
 
 ## 調査結果
 
@@ -54,6 +54,26 @@ GraphRAGの適用条件とリスクを確認する参考になります。案件
 
 [Guidelines and best practices for making government datasets ready for AI](https://www.gov.uk/government/publications/making-government-datasets-ready-for-ai/guidelines-and-best-practices-for-making-government-datasets-ready-for-ai) は、技術的な最適化、データとメタデータの品質、組織・基盤、法務・セキュリティ・倫理を含む観点を示しています。データをAIで利用する前の準備と責任分担を整理する公的資料として参照します。
 
+### AWSにおける提供元承認とアクセス付与
+
+Amazon DataZoneの[データ探索・購読・利用](https://docs.aws.amazon.com/datazone/latest/userguide/discover-subscribe-consume-data.html)では、利用者が理由を添えて購読を申請し、データ所有者が承認または拒否します。承認後は、管理対象の資産についてLake FormationやRedshiftへの権限付与が行われます。[メタデータによる承認ルール](https://docs.aws.amazon.com/datazone/latest/userguide/metadata-rules.html)では、全項目へのアクセスと、行・列を限定したアクセスが区別されています。
+
+この仕組みは、データの発見、業務上の利用承認、技術的な権限付与を別の段階として記録する例です。アセスメントでは、利用理由、承認者、対象範囲、付与先、有効期限を対応付けます。
+
+### AWSにおける加工ジョブと派生データの権限
+
+AWS IAMの[一時的なセキュリティ認証情報](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)は、委任やクロスアカウントアクセスで期間を限定した権限を提供します。AWS Glueの[ETLジョブに必要なIAM権限](https://docs.aws.amazon.com/glue/latest/dg/getting-started-min-privs-job.html)では、処理ロールに入力元の読取、出力先の書込、一時領域、暗号鍵への権限が必要であることを示しています。
+
+AWS Lake Formationの[権限モデル](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-overview.html)は、データカタログのメタデータ権限と、S3上の実データへの権限を区別し、IAMとLake Formationの双方の確認を要求します。[データロケーション権限](https://docs.aws.amazon.com/lake-formation/latest/dg/access-control-underlying-data.html)は、表を作成・変更する権限と、その表が参照する保存場所の権限を分けています。
+
+これらは、元データを読める主体、加工を実行する主体、派生データを書き込む場所、索引を更新する主体を工程ごとに確認する根拠になります。
+
+### W3C PROV-Oによる加工履歴の表現
+
+[PROV-O](https://www.w3.org/TR/prov-o/)は、データなどのEntity、変換を行うActivity、責任を持つAgentを区別し、used、wasGeneratedBy、wasDerivedFromなどで来歴を表します。
+
+元データ、加工処理、派生データ、実行主体を連結して記録することで、GraphRAGの索引、実体・関係、要約、コンテキストがどの情報と処理から生成されたかを追跡できます。
+
 ### Microsoft ResearchのBenchmarkQED記事
 
 [BenchmarkQED: Automated benchmarking of RAG systems](https://www.microsoft.com/en-us/research/blog/benchmarkqed-automated-benchmarking-of-rag-systems/) は、GraphRAGを含むRAG方式の比較例を紹介しています。全体質問に対する回答の網羅性、多様性、理解・判断への有用性、質問への関連性を評価しています。
@@ -74,6 +94,9 @@ GraphRAGの適用条件とリスクを確認する参考になります。案件
 | GraphRAG-Bench | GraphRAGパイプラインと複雑な質問 | グラフ構築・検索・生成を分けて見る | 業務ごとの合格点と権限準備を定める |
 | Microsoft GraphRAG資料 | GraphRAGの用途、透明性、リスク | 適用する質問の性質、根拠確認、サンプル検証を検討する | 対象ユースケースと保有データで判定する |
 | 英国政府ガイド | AI向けデータ準備とガバナンス | データ品質、責任、法務、権限を整理する | RAG固有の取得・生成評価を組み合わせる |
+| Amazon DataZone | データ提供元の承認とアクセス付与 | 利用理由、承認者、範囲、付与先を分けて記録する | 実際のクラウド資源と権限設定を確認する |
+| AWS IAM、Glue、Lake Formation | 一時権限、加工ジョブ、保存場所、カタログと実データ | 処理工程ごとの実行主体と入出力権限を確認する | 派生データの所有・保持・削除条件を定める |
+| W3C PROV-O | 元データ、加工活動、派生データ、責任主体 | 変換と生成物の来歴を記録する | 承認・技術権限の記録を組み合わせる |
 | 実務者ブログ | 導入前に確認する現場項目 | 情報源、権限、更新、抽出、運用の質問候補を得る | 研究上の品質指標と公的ガイドを組み合わせる |
 
 ## 4. 設計資料での利用
@@ -85,6 +108,8 @@ GraphRAGの適用条件とリスクを確認する参考になります。案件
 | RAGAS、ARES、GraphRAG-Bench | [段階別評価方式](../evaluation.md)の測定項目 |
 | Microsoft GraphRAGの透明性資料 | [GraphRAG適用支援の進め方](../graphrag-delivery-model.md)の確認事項 |
 | データ準備ガイド | [ユースケース・データ適合アセスメント](../enterprise-data-assessment.md)の判断根拠 |
+| Amazon DataZone、AWS IAM、Glue、Lake Formation | 同資料のデータ配置・権限フローと[システムモデル](../rag-system-model.md)の処理境界 |
+| W3C PROV-O | [情報変換の原理](../information-compression-and-context-injection.md)の来歴・派生データモデル |
 | 実務チェックリスト | アセスメント時の確認資料 |
 
 業務ごとの判定には、対象ユースケース、実データ、利用条件を使用します。
