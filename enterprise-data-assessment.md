@@ -2,7 +2,7 @@
 
 この資料は、お客様が得たい業務成果とAIエージェントに行わせたいユースケースに対し、保有データが適合するかをアセスメントするためのものです。適合性を確認したうえで、[Microsoft Researchが研究・開発するGraphRAG](https://www.microsoft.com/en-us/research/project/graphrag/)を技術基盤とするAIエージェントソリューションの適用範囲と実装方針を定めます。
 
-適合判断とGraphRAGの適用設計はasopitechが行います。判断結果をGraphRAGのデータモデル、抽出、階層、検索経路、コンテキスト編成へ対応付けます。
+適合判断とGraphRAGの適用設計はasopitechが行います。アセスメント結果に基づき、GraphRAGを対象業務へ適用します。
 
 ~~~text
 ユーザーが求める業務成果
