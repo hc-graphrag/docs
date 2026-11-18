@@ -1,19 +1,24 @@
 # AIエージェント導入・GraphRAG適用資料
 
-この資料群は、お客様の業務課題、AIエージェントに行わせたいユースケース、保有データの適合性をアセスメントし、[Microsoft Researchが研究・開発するGraphRAG](https://www.microsoft.com/en-us/research/project/graphrag/)をベースとするAIエージェントソリューションの設計・実装・検証へつなげるためのものです。
+目的に応じて資料を選ぶための案内ページです。全体像は導入ガイド、具体的な判断はアセスメント、技術の詳細は設計資料、検証方法は評価・実証資料に分けています。
 
-## 最初にお読みいただく資料
+## 資料の役割
 
-1. [RAGとは何か：AIエージェントの行動へコンテキストを供給するシステムモデル](rag-system-model.md)
-2. [情報圧縮・階層化・復元・コンテキスト注入の原理](information-compression-and-context-injection.md)
-3. [AIエージェント導入のためのユースケース・データ適合アセスメント](enterprise-data-assessment.md)
-4. [AIエージェント導入に向けたGraphRAG適用モデル](graphrag-delivery-model.md)
-5. [AIエージェント向けRAGの設計根拠](research/agent-context-and-data-fitness.md)
-6. [RAG / GraphRAGの段階別評価方式](evaluation.md)
+| 資料 | 用途 |
+|---|---|
+| [導入・適用ガイド](README.md) | あそぴてっくの支援内容と、ご相談からご提案までの入口を確認する |
+| [ユースケース・データ適合アセスメント](enterprise-data-assessment.md) | 業務成果、エージェントの行動、保有データの適合性を記録・判定する |
+| [GraphRAG適用支援の進め方](graphrag-delivery-model.md) | 支援工程、成果物、確認時点を確認する |
+| [AIエージェント向けRAGシステムモデル](rag-system-model.md) | 主体、処理段階、入出力、責任境界を確認する |
+| [情報圧縮・階層化・復元・コンテキスト注入の原理](information-compression-and-context-injection.md) | 情報変換の抽象モデルと不変条件を確認する |
+| [段階別評価方式](evaluation.md) | 評価単位、測定項目、判定方法を確認する |
+| [6業務ユースケース実証計画](use-cases/validation-plan.md) | 代表シナリオ、検証仮説、記録項目を確認する |
 
-## 導入設計と実証
+## 調査根拠
 
-- [既存のRAG / GraphRAG評価研究とデータ準備資料](research/rag-assessment-frameworks.md)
-- [検索困難データの調査メモ](research/hard-to-search-data.md)
-- [AIエージェント向け6業務ユースケース実証計画](use-cases/validation-plan.md)
-- [参考事例と一次資料](research/references.md)
+| 資料 | 用途 |
+|---|---|
+| [AIエージェント向けRAGの設計根拠](research/agent-context-and-data-fitness.md) | 設計判断を支える研究・標準・公式実装を確認する |
+| [既存評価研究とデータ準備資料](research/rag-assessment-frameworks.md) | 評価指標とデータ準備ガイドの適用範囲を確認する |
+| [検索困難データの調査メモ](research/hard-to-search-data.md) | データ種別ごとの仮説と検証候補を確認する |
+| [参考事例と一次資料](research/references.md) | 引用元と公式資料をたどる |
