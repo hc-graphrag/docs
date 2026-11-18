@@ -1,6 +1,6 @@
 # 参考事例と一次資料
 
-最終確認日: 2026-11-17。設計判断の前に、対象バージョンの一次資料を確認します。
+最終確認日: 2026-11-18。設計判断の前に、対象バージョンの一次資料を確認します。
 
 ## RAGの基礎
 
@@ -31,6 +31,14 @@
 - [Microsoft GraphRAG repository](https://github.com/microsoft/graphrag) — 公開実装。
 - [Microsoft GraphRAG benchmarking datasets](https://github.com/microsoft/graphrag-benchmarking-datasets) — 公開ベンチマーク用データ。
 
+## AIエージェント評価
+
+- Xiao Liu et al., [AgentBench: Evaluating LLMs as Agents](https://openreview.net/forum?id=zAdUB0aCTQ) — 複数の対話環境における推論、意思決定、指示追従の評価。
+- Chang Ma et al., [AgentBoard](https://proceedings.neurips.cc/paper_files/paper/2024/hash/877b40688e330a0e2a3fc24084208dfa-Abstract-Datasets_and_Benchmarks_Track.html) — 最終成功率と途中到達度を分ける分析的評価。
+- Shunyu Yao et al., [τ-bench](https://arxiv.org/abs/2406.12045) — 利用者、業務ルール、API、最終状態、複数試行の信頼性を扱うベンチマーク。
+- Jiarui Lu et al., [ToolSandbox](https://arxiv.org/abs/2408.04682) — 状態依存のツール利用と、必須・禁止事象による行動過程の評価。
+- Microsoft, [STATE-Bench](https://opensource.microsoft.com/blog/2026/05/19/introducing-state-bench-a-benchmark-for-ai-agent-memory/) — 企業業務を想定した完了率、反復成功、効率、利用体験の公開評価事例。
+
 ## 実装資料
 
 - [hc-graphrag/llamaindex-python](https://github.com/hc-graphrag/llamaindex-python) — GraphRAGを技術基盤として利用する実装です。local、global、DRIFTに関連するコードを含みます。
@@ -46,5 +54,6 @@
 |---|---|
 | [AIエージェント向けRAGシステムモデル](../rag-system-model.md) | RAG原論、Microsoft GraphRAG公式資料 |
 | [情報圧縮・階層化・復元・コンテキスト注入の原理](../information-compression-and-context-injection.md) | Shannon、Information Bottleneck、RAPTOR、RECOMP、Lost in the Middle |
-| [段階別評価方式](../evaluation.md) | RAG評価研究、GraphRAGの索引・検索仕様 |
+| [段階別評価方式](../evaluation.md) | RAG評価研究、GraphRAGの索引・検索仕様、AIエージェント評価研究 |
+| [業務ユースケース実証計画](../use-cases/validation-plan.md) | AgentBench、AgentBoard、τ-bench、ToolSandbox、STATE-Bench |
 | [ユースケース・データ適合アセスメント](../enterprise-data-assessment.md) | データ準備、由来・来歴、GraphRAGの適用条件 |
