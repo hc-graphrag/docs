@@ -8,14 +8,14 @@
 
 ## 2. 上位モデル
 
-ユーザーが求める成果を U、エージェントに行わせたいユースケースを A、お客様の原情報を X、原情報の由来・来歴・版・権限を P とします。
+ユーザーが求める成果を U、エージェントに行わせたいユースケースを A、お客様の原情報を X、原情報に付随する管理条件を P とします。Pには、所有者、配置先、利用承認、操作主体、許可された処理、由来、来歴、版、保持期間、有効期限を含めます。
 
 ~~~text
 お客様から受け取る情報
   U = 得たい業務成果
   A = エージェントに行わせたいユースケース
   X = 保有データ
-  P = 由来・来歴・版・権限・更新条件
+  P = 所有者・配置先・承認・操作主体・許可処理・来歴・版・保持期間・有効期限
 
 トップダウン・アセスメント
   D_assess(U, A, X, P)
@@ -69,7 +69,8 @@ M_runtime(K[A], {Z[m,l]}, P) → R
 
 | 変換 | 入力 | 出力 |
 |---|---|---|
-| 正規化・単位化 | 原情報 | Document、TextUnit、構造化単位 |
+| 利用承認・取得 | 原情報、提供元の承認、技術権限 | 利用可能な作業対象と管理条件 |
+| 正規化・単位化 | 許可された原情報 | Document、TextUnit、構造化単位 |
 | 表現生成 | TextUnit | 実体、関係、主張、埋め込み |
 | 階層化 | 表現と関係 | コミュニティ、上位要約 |
 | 実行時マッチング | 行動コンテキスト要件、索引 | 候補となる証拠 |
@@ -77,6 +78,20 @@ M_runtime(K[A], {Z[m,l]}, P) → R
 | 参照復元 | 圧縮表現、来歴 | 原文、表、版、位置 |
 | 意味再構成 | 複数の原情報 | 行動に必要な証拠束 |
 | コンテキスト編成 | 証拠束、状態、制約 | エージェント用コンテキスト |
+| 終了処理 | 複製、派生データ、キャッシュ、ログ | 返却、削除、保持継続、権限失効の記録 |
+
+### 4.1 権限を伴う変換
+
+各変換 T[i] は、入力データ X[i] と管理条件 P[i] を受け取り、派生データ X[i+1] と新しい管理条件 P[i+1] を生成します。
+
+~~~text
+authorize(T[i], X[i], destination[i], P[i]) = true
+T[i](X[i], P[i]) → (X[i+1], P[i+1])
+~~~
+
+authorize は、提供元が承認した利用目的と加工範囲、実行主体の技術権限、出力先への保存権限がそろっていることを表します。P[i+1]には、元データから引き継ぐ制約に加えて、派生データの所有者、配置先、参照主体、許可する再加工・共有・削除、有効期限を記録します。
+
+同じデータから複数の派生物を作る場合も、正規化データ、埋め込み、グラフ、要約、コンテキスト、ログごとにPを持たせます。入力への読取権限と、出力の生成・保存・利用権限を分けて評価します。
 
 ## 5. 圧縮は表現族を作る処理
 
@@ -227,7 +242,9 @@ C = assemble(E[A], A, budget)
 | Source identity | 原情報を一意に識別できる |
 | Provenance | 出力から変換履歴と原位置へ戻れる |
 | Version | 版と有効時点を判定できる |
-| Access boundary | 権限を派生表現と注入へ伝播できる |
+| Access boundary | 原情報の利用条件を派生表現、検索、注入へ反映できる |
+| Authorization continuity | 各変換の入力、実行主体、出力先について承認と技術権限を確認できる |
+| Lifecycle | 権限失効時に複製、派生データ、キャッシュ、ログの処置を実行できる |
 | Fact boundary | 原文事実、要約、推定を区別できる |
 | Relation semantics | 関係の方向、条件、時点を保持できる |
 | Contradiction | 矛盾、反証、例外を保持できる |
@@ -269,3 +286,6 @@ Microsoft GraphRAGは、TextUnit、実体、関係、コミュニティ、階層
 - Darren Edge et al., [From Local to Global: A Graph RAG Approach](https://arxiv.org/abs/2404.16130)
 - Nelson F. Liu et al., [Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/)
 - Microsoft GraphRAG, [Indexing Dataflow](https://microsoft.github.io/graphrag/index/default_dataflow/)
+- W3C, [PROV-O: The PROV Ontology](https://www.w3.org/TR/prov-o/)
+- AWS, [Temporary security credentials in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)
+- AWS Glue, [Review IAM permissions needed for ETL jobs](https://docs.aws.amazon.com/glue/latest/dg/getting-started-min-privs-job.html)
