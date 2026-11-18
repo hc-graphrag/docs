@@ -197,7 +197,7 @@ restore(z, P) → x[source]
 ### 9.2 意味再構成
 
 ~~~text
-reconstruct({x[i]}, Q) → E[Q]
+reconstruct({x[i]}, A, K[A]) → E[A]
 ~~~
 
 複数の原文断片、関係、数値、例外を、エージェントの行動に必要な証拠束 E[A] として組み直します。
