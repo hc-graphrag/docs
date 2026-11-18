@@ -72,7 +72,7 @@ Agentic RAGは、エージェントの状態と進行中の行動に応じて、
 
 ## 3. 行動段階ごとのコンテキスト
 
-次の区分は、ReAct、Generative Agents、MemGPT、Agentic RAG研究を業務導入向けに統合した、あそぴてっくの設計モデルです。
+次の区分は、ReAct、Generative Agents、MemGPT、Agentic RAG研究を業務導入向けに統合した、本資料の設計モデルです。
 
 | 行動段階 | エージェントが行うこと | RAGから供給するコンテキスト | RAG以外から必要なコンテキスト |
 |---|---|---|---|
