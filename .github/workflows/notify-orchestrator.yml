@@ -8,8 +8,11 @@ on:
     # Public docs and linked assets can live anywhere in this repository.
     # The orchestrator determines which files are included in the mirror.
 
+  workflow_dispatch:
+
 jobs:
   notify:
+    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Orchestrator
