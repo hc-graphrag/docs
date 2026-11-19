@@ -7,7 +7,7 @@
 | 資料 | 用途 |
 |---|---|
 | [導入・適用ガイド](README.md) | あそぴてっくの支援内容と、ご相談からご提案までの入口を確認する |
-| [ユースケース・データ適合アセスメント](enterprise-data-assessment.md) | 業務成果、エージェントの行動、保有データの適合性を記録・判定する |
+| [ユースケース・データ適合アセスメント](enterprise-data-assessment.md) | 業務成果、エージェントの行動、保有データ、利用条件の適合性を記録・判定する |
 | [GraphRAG適用支援の進め方](graphrag-delivery-model.md) | 支援工程、成果物、確認時点を確認する |
 | [AIエージェント向けRAGシステムモデル](rag-system-model.md) | 主体、処理段階、入出力、責任境界を確認する |
 | [情報圧縮・階層化・復元・コンテキスト注入の原理](information-compression-and-context-injection.md) | 情報変換の抽象モデルと不変条件を確認する |
