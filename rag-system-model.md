@@ -108,7 +108,7 @@ AIエージェント基盤は、ユーザーの目的、現在状態、ツール
 - アセスメント項目: [ユースケース・データ適合アセスメント](enterprise-data-assessment.md)
 - データ配置・権限フロー: [同資料のデータ配置・権限フローのアセスメント](enterprise-data-assessment.md#6-データ配置権限フローのアセスメント)
 - 情報変換の詳細: [情報圧縮・階層化・復元・コンテキスト注入の原理](information-compression-and-context-injection.md)
-- 導入工程: [GraphRAG適用支援の進め方](graphrag-delivery-model.md)
+- 導入工程: [AIエージェント・GraphRAGシステム導入支援の進め方](graphrag-delivery-model.md)
 - 測定方法: [段階別評価方式](evaluation.md)
 - 実証シナリオ: [業務ユースケース実証計画](use-cases/validation-plan.md)
 
