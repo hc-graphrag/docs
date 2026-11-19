@@ -106,7 +106,7 @@ AWS Lake Formationの[権限モデル](https://docs.aws.amazon.com/lake-formatio
 | 調査対象 | 反映先 |
 |---|---|
 | RAGAS、ARES、GraphRAG-Bench | [段階別評価方式](../evaluation.md)の測定項目 |
-| Microsoft GraphRAGの透明性資料 | [GraphRAG適用支援の進め方](../graphrag-delivery-model.md)の確認事項 |
+| Microsoft GraphRAGの透明性資料 | [AIエージェント・GraphRAGシステム導入支援の進め方](../graphrag-delivery-model.md)の確認事項 |
 | データ準備ガイド | [ユースケース・データ適合アセスメント](../enterprise-data-assessment.md)の判断根拠 |
 | Amazon DataZone、AWS IAM、Glue、Lake Formation | 同資料のデータ配置・権限フローと[システムモデル](../rag-system-model.md)の処理境界 |
 | W3C PROV-O | [情報変換の原理](../information-compression-and-context-injection.md)の来歴・派生データモデル |
