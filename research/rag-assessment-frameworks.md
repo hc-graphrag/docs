@@ -42,7 +42,7 @@ GraphRAGのパイプラインを段階別に評価する参考です。特定業
 
 [Microsoft GraphRAG Responsible AI Transparency Note](https://github.com/microsoft/graphrag/blob/main/RAI_TRANSPARENCY.md) は、複数文書にまたがる情報や全体傾向を問う用途、回答の根拠・出典の確認、人による確認、プロンプトやデータ経由の攻撃、幻覚の評価などを説明しています。独自データでは小さなサンプルで索引処理を確認することも勧めています。
 
-GraphRAGの適用条件とリスクを確認する参考になります。案件ごとの判定は、対象ユースケースと保有データを用いて行います。
+GraphRAGの適用条件とリスクを確認する参考になります。個別の判定は、対象ユースケースと保有データを用いて行います。
 
 ### Microsoft FoundryのRAG評価資料
 
