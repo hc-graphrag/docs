@@ -24,7 +24,7 @@ AIエージェント向けRAGでは、ユーザーが求める業務成果から
 | RAG、GraphRAG、AIエージェントの責任境界 | [AIエージェント向けRAGシステムモデル](../rag-system-model.md) |
 | 圧縮、階層化、復元、コンテキスト編成 | [情報変換の原理](../information-compression-and-context-injection.md) |
 | RAG品質とエージェント行動の測定 | [段階別評価方式](../evaluation.md) |
-| 適用工程と成果物 | [GraphRAG適用支援の進め方](../graphrag-delivery-model.md) |
+| 適用工程と成果物 | [AIエージェント・GraphRAGシステム導入支援の進め方](../graphrag-delivery-model.md) |
 
 ### 1.2 調査結果から区別する二つの判断
 
