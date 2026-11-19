@@ -167,4 +167,4 @@ flowchart TD
 
 ## 10. GraphRAG適用設計への引き渡し
 
-適合判定で確定したユースケース、対象データ、配置先、提供元の承認、加工工程、派生データの取扱い、権限条件をGraphRAGの適用設計へ引き渡します。設計工程と成果物は[GraphRAG適用支援の進め方](graphrag-delivery-model.md)、代表行動による検証は[業務ユースケース実証計画](use-cases/validation-plan.md)に示します。
+適合判定で確定したユースケース、対象データ、配置先、提供元の承認、加工工程、派生データの取扱い、権限条件をGraphRAGの適用設計へ引き渡します。設計工程と成果物は[AIエージェント・GraphRAGシステム導入支援の進め方](graphrag-delivery-model.md)、代表行動による検証は[業務ユースケース実証計画](use-cases/validation-plan.md)に示します。
